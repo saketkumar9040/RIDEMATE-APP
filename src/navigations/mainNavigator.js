@@ -2,10 +2,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useEffect, useState } from "react";
 import * as Location from 'expo-location';
+import { Alert } from "react-native";
 
 import HomeScreen from "../screens/HomeScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
-import { Alert } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +19,7 @@ const MainNavigator = () => {
     const startBackgroundTracking = async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
-        Alert.alert("Permission for location was denied")
+       Alert.alert("Permission for location was denied")
        return;
       }else{
         let currentLocation = await Location.getCurrentPositionAsync({});

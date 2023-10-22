@@ -14,12 +14,12 @@ const styles = StyleSheet.create({
    },
    headerText:{
     color:"#ffffff",
-    fontWeight:"900",
-    fontSize:27,
+    fontWeight:"700",
+    fontSize:32,
     letterSpacing:1,
    },
    image:{
-    height:400,
+    height:350,
     width:400,
     resizeMode:"contain"
    },
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
    },
    enjoyRideText:{
     textAlign:"center",
-    fontWeight:"100",
+    fontWeight:"500",
     fontSize:18,
     color:"#ffffff",
     letterSpacing:2,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
    },
    buttonText:{
     textAlign:"center",
-    fontWeight:"100",
+    fontWeight:"800",
     fontSize:18,
     color:"#ffffff",
     letterSpacing:2,
