@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     resizeMode:"contain"
    },
    imageContainer:{
+    flex:1,
     alignSelf:'center'
    },
    enjoyRideText:{
@@ -32,6 +33,26 @@ const styles = StyleSheet.create({
     fontSize:18,
     color:"#ffffff",
     letterSpacing:2,
+   },
+   buttonContainer:{
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"center",
+     marginBottom:30,
+     backgroundColor:"#4CBB17",
+     padding:10,
+     margin:15,
+   },
+   buttonText:{
+    textAlign:"center",
+    fontWeight:"100",
+    fontSize:18,
+    color:"#ffffff",
+    letterSpacing:2,
+   },
+   arrowLeft:{
+    position:"absolute",
+    right:10
    }
 });
 
