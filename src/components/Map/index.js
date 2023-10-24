@@ -1,13 +1,14 @@
 import { View, Text, StyleSheet, StatusBar } from "react-native";
 import React from "react";
 import MapView from "react-native-maps";
-import * as Location from "expo-location"
 
 import styles from "./style";
+import { useSelector } from "react-redux";
 
 const Map = () => {
- let currentLocation =  Location.getCurrentPositionAsync({});
- console.log(currentLocation)
+
+  const currentLocation = useSelector(state=>state.auth.currentLocation);
+  console.log(currentLocation)
   return (
     <View style={styles.mapContainer}>
       <StatusBar
@@ -19,8 +20,8 @@ const Map = () => {
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: currentLocation.coords.latitude,
+          longitude: currentLocation.coords.longitude,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
