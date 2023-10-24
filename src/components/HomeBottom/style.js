@@ -3,11 +3,11 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     bottomContainer:{
         padding:10,
-        marginTop:10,
     },
     searchRideText:{
         fontSize:25,
         fontWeight:"500",
+        alignSelf:"center"
     },
     searchInputContainer:{
         flexDirection:'row',
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight:"500",
         alignItems:"center",
-        padding:15,
+        padding:10,
         width:"100%",
         paddingHorizontal:20,
     },
