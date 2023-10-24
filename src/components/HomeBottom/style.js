@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"center",
-         marginTop:30,
+         margin:10,
          backgroundColor:"#89CFF0",
          padding:10,
        },

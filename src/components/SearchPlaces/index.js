@@ -2,10 +2,10 @@ import { ScrollView } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Geolocation from "react-native-geolocation-service";
 
-const SearchPlaces = () => {
+const SearchPlaces = ({placeholder}) => {
   return (
     <GooglePlacesAutocomplete
-      placeholder="Enter Location"
+      placeholder={placeholder}
       minLength={2}
       autoFocus={false}
       returnKeyType={"default"}

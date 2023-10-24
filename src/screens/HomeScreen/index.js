@@ -7,7 +7,7 @@ import HomeBottom from '../../components/HomeBottom';
 
 const HomeScreen = () => {
   return (
-     <SafeAreaView style={StyleSheet.absoluteFillObject}>
+     <SafeAreaView style={{...StyleSheet.absoluteFillObject,backgroundColor:"#fff"}}>
       <Map/>
       <HomeBottom/>
     </SafeAreaView>
