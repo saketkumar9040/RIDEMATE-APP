@@ -1,14 +1,15 @@
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
 import React from "react";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
+import start from "../../../assets/images/pin.png";
 
 import styles from "./style";
 import { useSelector } from "react-redux";
+import { mapCustomStyle } from "../../globals/styles/mapCustomStyle";
 
 const Map = () => {
-
-  const currentLocation = useSelector(state=>state.auth.currentLocation);
-  console.log(currentLocation)
+  const currentLocation = useSelector((state) => state.auth.currentLocation);
+  console.log(currentLocation);
   return (
     <View style={styles.mapContainer}>
       <StatusBar
@@ -25,8 +26,21 @@ const Map = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
+        // customMapStyle={mapCustomStyle}
+        userInterfaceStyle="dark"
       >
-        </MapView>
+        <Marker
+          coordinate={{
+            latitude: currentLocation.coords.latitude,
+            longitude: currentLocation.coords.longitude,
+          }}
+        >
+          <Image
+            source={start}
+            style={{ width: 34, height: 34, resizeMode: "contain" }}
+          />
+        </Marker>
+      </MapView>
     </View>
   );
 };

@@ -25,7 +25,7 @@ const HomeBottom = () => {
           value={""}
          />
       </View>
-      <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate("home")}>
+      <TouchableOpacity style={styles.buttonContainer} onPress={()=>console.log("searching...")}>
         <Text style={styles.buttonText}>SEARCH</Text>
         <AntDesign name="arrowright" size={28} color="#ffffff" style={styles.arrowLeft} />
       </TouchableOpacity>

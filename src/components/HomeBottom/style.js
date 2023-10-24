@@ -5,8 +5,8 @@ const styles = StyleSheet.create({
         padding:10,
     },
     searchRideText:{
-        fontSize:25,
-        fontWeight:"500",
+        fontSize:22,
+        fontWeight:"700",
         alignSelf:"center"
     },
     searchInputContainer:{
