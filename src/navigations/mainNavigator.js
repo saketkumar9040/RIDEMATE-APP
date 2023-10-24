@@ -13,7 +13,7 @@ const MainNavigator = () => {
 
   const [location,setLocation]=useState(null);
   const [address,setAddress]= useState(null);
-  console.log(address);
+  // console.log(address);
 
   useEffect(()=>{
     const startBackgroundTracking = async () => {
