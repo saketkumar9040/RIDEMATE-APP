@@ -1,7 +1,8 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
 import styles from './style';
 import { useSelector } from 'react-redux';
+import { AntDesign } from '@expo/vector-icons';
 
 const HomeBottom = () => {
     const currentAddress = useSelector(state=>state.auth.currentAddress[0]);
@@ -21,6 +22,10 @@ const HomeBottom = () => {
           value={currentAddress.name}
          />
       </View>
+      <TouchableOpacity style={styles.buttonContainer} onPress={()=>navigation.navigate("home")}>
+        <Text style={styles.buttonText}>SEARCH RIDE</Text>
+        <AntDesign name="arrowright" size={28} color="#ffffff" style={styles.arrowLeft} />
+      </TouchableOpacity>
     </View>
   )
 }
