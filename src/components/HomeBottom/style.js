@@ -13,14 +13,18 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         backgroundColor:'#E5E4E2',
-        padding:15,
+        padding:5,
         marginTop:10,
         borderRadius:10,
         paddingHorizontal:20,
     },
     textInput:{
         fontSize:20,
-        fontWeight:"500"
+        fontWeight:"500",
+        alignItems:"center",
+        padding:15,
+        width:"100%",
+        paddingHorizontal:20,
     },
     buttonContainer:{
         flexDirection:"row",
@@ -40,7 +44,7 @@ const styles = StyleSheet.create({
        arrowLeft:{
         position:"absolute",
         right:10,
-       }
+       },
 });
 
 export default styles;
