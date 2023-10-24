@@ -9,7 +9,6 @@ import { mapCustomStyle } from "../../globals/styles/mapCustomStyle";
 
 const Map = () => {
   const currentLocation = useSelector((state) => state.auth.currentLocation);
-  console.log(currentLocation);
   return (
     <View style={styles.mapContainer}>
       <StatusBar
@@ -23,7 +22,7 @@ const Map = () => {
         initialRegion={{
           latitude: currentLocation.coords.latitude,
           longitude: currentLocation.coords.longitude,
-          latitudeDelta: 0.0422,
+          latitudeDelta: 0.0622,
           longitudeDelta: 0.0421,
         }}
         // customMapStyle={mapCustomStyle}

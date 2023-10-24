@@ -13,10 +13,10 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         backgroundColor:'#E5E4E2',
-        padding:5,
+        // padding:5,
         marginTop:10,
         borderRadius:10,
-        paddingHorizontal:20,
+        paddingHorizontal:10,
     },
     textInput:{
         fontSize:20,
