@@ -1,29 +1,32 @@
 import { ScrollView } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Geolocation from "react-native-geolocation-service";
+import {GOOGLE_API_KEY} from "../../configs/env"
 
 const SearchPlaces = ({placeholder}) => {
   return (
     <GooglePlacesAutocomplete
       placeholder={placeholder}
-      minLength={2}
+      minLength={3}
       autoFocus={false}
       returnKeyType={"default"}
       listViewDisplayed="auto"
       fetchDetails={true}
       query={{
-        key: "AIzaSyCp_xNn3-d1v1rSZL-5UASdMkrcsDjyNQQ",
+        key: GOOGLE_API_KEY,
         language: "en",
+        type:"establishment",
+        // radius:50
       }}
+      enablePoweredByContainer={false}
       styles={{
         textInputContainer: {
-          // backgroundColor: "grey",
           padding:10,
         },
         textInput: {
-          height: 38,
           color: "#5d5d5d",
           fontSize: 16,
+          paddingLeft:20,
         },
         predefinedPlacesDescription: {
           color: "#1faadb",
@@ -31,8 +34,15 @@ const SearchPlaces = ({placeholder}) => {
       }}
       currentLocation={true}
       currentLocationLabel="Current location"
-      debounce={200}
+      debounce={300}
+      GooglePlacesDetailsQuery={{
+        fields:["formatted_address","geometry"]
+      }}
       //   predefinedPlaces={[HOME,WORK]}
+      onPress={(data, details = null) => {
+        // 'details' is provided when fetchDetails = true
+        console.log(data, details);
+      }}
     />
   );
 };

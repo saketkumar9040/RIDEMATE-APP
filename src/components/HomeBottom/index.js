@@ -16,7 +16,7 @@ const HomeBottom = () => {
           style={styles.textInput}
           value={currentAddress.name}
          /> */}
-        <SearchPlaces placeholder={"From..."}/>
+        <SearchPlaces placeholder={"Pick up location..."}/>
       </View>
       <View style={styles.searchInputContainer}>
       <FontAwesome name="flag" size={29} color="black" />  
