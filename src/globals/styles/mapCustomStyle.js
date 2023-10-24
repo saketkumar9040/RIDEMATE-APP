@@ -5,12 +5,12 @@ export const mapCustomStyle = [
     {
       featureType: "administrative.locality",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#d59563" }],
+      stylers: [{ color: "#746855" }],
     },
     {
       featureType: "poi",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#d59563" }],
+      stylers: [{ color: "#746855" }],
     },
     {
       featureType: "poi.park",
@@ -20,7 +20,7 @@ export const mapCustomStyle = [
     {
       featureType: "poi.park",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#6b9a76" }],
+      stylers: [{ color: "#746855" }],
     },
     {
       featureType: "road",
@@ -50,7 +50,7 @@ export const mapCustomStyle = [
     {
       featureType: "road.highway",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#f3d19c" }],
+      stylers: [{ color: "#746855" }],
     },
     {
       featureType: "transit",
@@ -60,21 +60,21 @@ export const mapCustomStyle = [
     {
       featureType: "transit.station",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#d59563" }],
+      stylers: [{ color: "#746855" }],
     },
     {
       featureType: "water",
       elementType: "geometry",
-      stylers: [{ color: "#17263c" }],
+      stylers: [{ color: "#89CFF0" }],
     },
     {
       featureType: "water",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#515c6d" }],
+      stylers: [{ color: "#89CFF0" }],
     },
     {
       featureType: "water",
       elementType: "labels.text.stroke",
-      stylers: [{ color: "#17263c" }],
+      stylers: [{ color: "#89CFF0" }],
     },
   ];

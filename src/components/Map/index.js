@@ -23,11 +23,10 @@ const Map = () => {
         initialRegion={{
           latitude: currentLocation.coords.latitude,
           longitude: currentLocation.coords.longitude,
-          latitudeDelta: 0.0922,
+          latitudeDelta: 0.0422,
           longitudeDelta: 0.0421,
         }}
         // customMapStyle={mapCustomStyle}
-        userInterfaceStyle="dark"
       >
         <Marker
           coordinate={{
