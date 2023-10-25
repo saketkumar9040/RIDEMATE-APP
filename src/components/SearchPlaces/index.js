@@ -1,7 +1,7 @@
 import { ScrollView } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Geolocation from "react-native-geolocation-service";
-import {GOOGLE_API_KEY} from "../../configs/env"
+import { GOOGLE_API_KEY } from "@env"
 
 const SearchPlaces = ({placeholder}) => {
   return (

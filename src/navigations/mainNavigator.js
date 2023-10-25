@@ -24,8 +24,8 @@ const MainNavigator = () => {
         let currentLocation = await Location.getCurrentPositionAsync({});
         dispatch(setCurrentLocation({currentLocation}));
         let currentAddress = await Location.reverseGeocodeAsync({
-          latitude: currentLocation.coords.latitude,
-          longitude: currentLocation.coords.longitude,
+          latitude: currentLocation?.coords.latitude,
+          longitude: currentLocation?.coords.longitude,
         });
         dispatch(setCurrentAddress({currentAddress}));
       }
@@ -48,6 +48,7 @@ const MainNavigator = () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
 };
 
