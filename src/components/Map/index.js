@@ -25,7 +25,7 @@ const Map = () => {
           latitudeDelta: 0.0622,
           longitudeDelta: 0.0421,
         }}
-        // customMapStyle={mapCustomStyle}
+        customMapStyle={mapCustomStyle}
       >
         <Marker
           coordinate={{

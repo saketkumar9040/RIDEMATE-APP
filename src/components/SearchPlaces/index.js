@@ -1,11 +1,12 @@
 import { ScrollView } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Geolocation from "react-native-geolocation-service";
-import { GOOGLE_API_KEY } from "@env"
+import { GOOGLE_API_KEY } from "@env";
 
-const SearchPlaces = ({placeholder}) => {
+const SearchPlaces = ({ placeholder }) => {
   return (
     <GooglePlacesAutocomplete
+      nearbyPlacesAPI="GooglePlacesSearch"
       placeholder={placeholder}
       minLength={3}
       autoFocus={false}
@@ -15,18 +16,18 @@ const SearchPlaces = ({placeholder}) => {
       query={{
         key: GOOGLE_API_KEY,
         language: "en",
-        type:"establishment",
+        type: "establishment",
         // radius:50
       }}
       enablePoweredByContainer={false}
       styles={{
         textInputContainer: {
-          padding:10,
+          padding: 10,
         },
         textInput: {
           color: "#5d5d5d",
           fontSize: 16,
-          paddingLeft:20,
+          paddingLeft: 20,
         },
         predefinedPlacesDescription: {
           color: "#1faadb",
@@ -34,9 +35,9 @@ const SearchPlaces = ({placeholder}) => {
       }}
       currentLocation={true}
       currentLocationLabel="Current location"
-      debounce={300}
+      debounce={400}
       GooglePlacesDetailsQuery={{
-        fields:["formatted_address","geometry"]
+        fields: ["formatted_address", "geometry"],
       }}
       //   predefinedPlaces={[HOME,WORK]}
       onPress={(data, details = null) => {
