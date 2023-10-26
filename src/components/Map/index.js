@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
 import React from "react";
 import MapView, { Marker } from "react-native-maps";
 import start from "../../../assets/images/pin.png";
+import end from "../../../assets/images/flag.png";
 
 import styles from "./style";
 import { useSelector } from "react-redux";
@@ -23,6 +24,7 @@ const Map = () => {
       <Text style={styles.rideMateText}>RideMate</Text>
       <MapView
         style={styles.map}
+        mapType="mutedStandard"
         initialRegion={{
           latitude: currentLocation?.coords.latitude,
           longitude: currentLocation?.coords.longitude,
@@ -31,10 +33,11 @@ const Map = () => {
         }}
         customMapStyle={mapCustomStyle}
       >
+      
         <Marker
           coordinate={{
-            latitude: currentLocation?.coords.latitude,
-            longitude: currentLocation?.coords.longitude,
+            latitude: startingPoint?.location.lat ?? currentLocation.coords.latitude,
+            longitude: startingPoint?.location.lng ?? currentLocation.coords.longitude,
           }}
         >
           <Image
@@ -42,6 +45,21 @@ const Map = () => {
             style={{ width: 34, height: 34, resizeMode: "contain" }}
           />
         </Marker>
+        {
+          destination && (
+            <Marker
+            coordinate={{
+              latitude: destination?.location.lat ,
+              longitude: destination?.location.lng ,
+            }}
+          >
+            <Image
+              source={end}
+              style={{ width: 34, height: 34, resizeMode: "contain" }}
+            />
+          </Marker>
+          )
+        }
       </MapView>
     </View>
   );
