@@ -1,11 +1,13 @@
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Geolocation from "react-native-geolocation-service";
 import { GOOGLE_API_KEY } from "@env";
- 
-navigator.geolocation=Geolocation;
+import { useEffect } from "react";
+import { getLastKnownPositionAsync } from "expo-location";
 
+navigator.geolocation = Geolocation;
 
 const SearchPlaces = ({ placeholder }) => {
+
   return (
     <GooglePlacesAutocomplete
       nearbyPlacesAPI="GooglePlacesSearch"
@@ -19,7 +21,7 @@ const SearchPlaces = ({ placeholder }) => {
         key: GOOGLE_API_KEY,
         language: "en",
         type: "establishment",
-        components:"country:in"
+        components: "country:in",
         // radius:50
       }}
       enablePoweredByContainer={false}
@@ -34,14 +36,14 @@ const SearchPlaces = ({ placeholder }) => {
           color: "#5d5d5d",
           fontSize: 18,
           paddingLeft: 20,
-          fontWeight:"800"
+          fontWeight: "800",
         },
         predefinedPlacesDescription: {
           color: "#1faadb",
         },
       }}
-      currentLocation={true}
-      currentLocationLabel="Current location"
+      // currentLocation={true}
+      // currentLocationLabel="Current location"
       debounce={400}
       GooglePlacesDetailsQuery={{
         fields: ["formatted_address", "geometry"],
