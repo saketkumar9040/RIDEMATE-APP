@@ -11,12 +11,11 @@ import { useSelector } from "react-redux";
 import { mapCustomStyle } from "../../globals/styles/mapCustomStyle";
 
 const Map = () => {
-  const currentLocation = useSelector(state=>state?.auth.currentLocation)
-  const currentAddress = useSelector(state=>state?.auth.currentAddress[0])
-  const startingPoint = useSelector(state=>state?.nav.origin);
-  const destination = useSelector(state=>state?.nav.destination);
+  const currentAddress = useSelector(state=>state.auth.currentAddress[0])
+  const startingPoint = useSelector(state=>state.nav.origin);
+  const destination = useSelector(state=>state.nav.destination);
   // console.log(currentAddress)
-  // console.log(startingPoint.description);
+  // console.log(startingPoint);
   // console.log(destination)
   const mapRef = useRef();
 
@@ -56,7 +55,7 @@ const Map = () => {
                destination={{latitude:destination.location.lat,longitude:destination.location.lng}}
                apikey={GOOGLE_API_KEY}
                strokeWidth={3}
-               strokeColor="red"
+               strokeColor="black"
             />
           )
         }
@@ -74,7 +73,6 @@ const Map = () => {
             source={start}
             style={{ width: 34, height: 34, resizeMode: "contain",marginBottom:5, }}
           />
-          {/* <Text style={{backgroundColor:"#ffffff"}}>{currentAddress.name}</Text> */}
         </Marker>
         {
           destination && (
