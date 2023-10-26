@@ -20,8 +20,8 @@ const Map = () => {
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: currentLocation.coords.latitude,
-          longitude: currentLocation.coords.longitude,
+          latitude: currentLocation?.coords.latitude,
+          longitude: currentLocation?.coords.longitude,
           latitudeDelta: 0.0622,
           longitudeDelta: 0.0421,
         }}
@@ -29,8 +29,8 @@ const Map = () => {
       >
         <Marker
           coordinate={{
-            latitude: currentLocation.coords.latitude,
-            longitude: currentLocation.coords.longitude,
+            latitude: currentLocation?.coords.latitude,
+            longitude: currentLocation?.coords.longitude,
           }}
         >
           <Image

@@ -3,6 +3,7 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import Geolocation from "react-native-geolocation-service";
 import { GOOGLE_API_KEY } from "@env";
 
+
 const SearchPlaces = ({ placeholder }) => {
   return (
     <GooglePlacesAutocomplete
@@ -21,6 +22,9 @@ const SearchPlaces = ({ placeholder }) => {
       }}
       enablePoweredByContainer={false}
       styles={{
+        container: {
+          flex: 1,
+        },
         textInputContainer: {
           padding: 10,
         },
@@ -42,7 +46,7 @@ const SearchPlaces = ({ placeholder }) => {
       //   predefinedPlaces={[HOME,WORK]}
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
-        console.log(data, details);
+        console.log(details.geometry.location);
       }}
     />
   );
