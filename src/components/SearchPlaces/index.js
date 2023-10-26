@@ -2,13 +2,14 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import Geolocation from "react-native-geolocation-service";
 import { GOOGLE_API_KEY } from "@env";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setDestination, setOrigin } from "../../redux/navSlice";
 
 navigator.geolocation = Geolocation;
 
-const SearchPlaces = ({ placeholder }) => {
+const SearchPlaces = ({ placeholder, type }) => {
   const currentLocation = useSelector((state) => state.auth.currentLocation);
-  // console.log(currentLocation);
+  const dispatch = useDispatch();
 
   return (
     <GooglePlacesAutocomplete
@@ -52,10 +53,25 @@ const SearchPlaces = ({ placeholder }) => {
       GooglePlacesDetailsQuery={{
         fields: ["formatted_address", "geometry"],
       }}
-      //   predefinedPlaces={[HOME,WORK]}
+      // predefinedPlaces={[HOME,WORK]}
       onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-        console.log(details.geometry.location);
+        if (type === "startingPoint") {
+          dispatch(
+            setOrigin({
+              location: details.geometry.location,
+              description: data.description,
+            })
+          );
+        }
+        if (type === "destination") {
+          dispatch(
+            setDestination({
+              location: details.geometry.location,
+              description: data.description,
+            })
+          );
+        }
+        // console.log(details.geometry.location);
       }}
     />
   );

@@ -8,7 +8,11 @@ import { useSelector } from "react-redux";
 import { mapCustomStyle } from "../../globals/styles/mapCustomStyle";
 
 const Map = () => {
-  const currentLocation = useSelector((state) => state.auth.currentLocation);
+  const currentLocation = useSelector(state=>state.auth.currentLocation)
+  const startingPoint = useSelector(state=>state?.nav.origin);
+  const destination = useSelector(state=>state?.nav.destination);
+  console.log(startingPoint);
+  console.log(destination)
   return (
     <View style={styles.mapContainer}>
       <StatusBar

@@ -9,13 +9,13 @@ const navSlice = createSlice({
   },
   reducers: {
     setOrigin: (state, action) => {
-      state.origin = action.payload.origin;
+      state.origin = action.payload;
     },
     setDestination: (state, action) => {
-      state.destination = action.payload.destination;
+      state.destination = action.payload;
     },
     setTravelTime: (state, action) => {
-      state.travelTime = action.payload.travelTime;
+      state.travelTime = action.payload;
     },
   },
 });

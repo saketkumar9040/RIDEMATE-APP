@@ -12,11 +12,12 @@ const styles = StyleSheet.create({
     searchInputContainer:{
         flexDirection:'row',
         alignItems:'center',
+        justifyContent:"center",
         backgroundColor:'#E5E4E2',
         // padding:5,
         marginTop:10,
         borderRadius:10,
-        paddingHorizontal:10,
+        paddingLeft:10,
     },
     textInput:{
         fontSize:20,
