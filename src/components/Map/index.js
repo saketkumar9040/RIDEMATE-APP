@@ -42,8 +42,8 @@ const Map = () => {
         style={styles.map}
         mapType="mutedStandard"
         initialRegion={{
-          latitude: currentLocation?.coords.latitude,
-          longitude: currentLocation?.coords.longitude,
+          latitude: startingPoint.location.lat,
+          longitude: startingPoint.location.lng,
           latitudeDelta: 0.0622,
           longitudeDelta: 0.0421,
         }}
@@ -63,8 +63,8 @@ const Map = () => {
       
         <Marker
           coordinate={{
-            latitude: startingPoint?.location?.lat ?? currentLocation.coords.latitude,
-            longitude: startingPoint?.location?.lng ?? currentLocation.coords.longitude,
+            latitude: startingPoint?.location?.lat ,
+            longitude: startingPoint?.location?.lng ,
           }}
           title="origin"
           description={startingPoint?.description?? currentAddress.name}
