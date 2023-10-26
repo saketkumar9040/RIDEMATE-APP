@@ -10,8 +10,10 @@ import { mapCustomStyle } from "../../globals/styles/mapCustomStyle";
 
 const Map = () => {
   const currentLocation = useSelector(state=>state.auth.currentLocation)
+  const currentAddress = useSelector(state=>state.auth.currentAddress[0])
   const startingPoint = useSelector(state=>state?.nav.origin);
   const destination = useSelector(state=>state?.nav.destination);
+  console.log(currentAddress)
   console.log(startingPoint);
   console.log(destination)
   return (
@@ -39,11 +41,15 @@ const Map = () => {
             latitude: startingPoint?.location.lat ?? currentLocation.coords.latitude,
             longitude: startingPoint?.location.lng ?? currentLocation.coords.longitude,
           }}
+          title="origin"
+          description={startingPoint?.description?? currentAddress.name}
+          identifier="origin"
         >
           <Image
             source={start}
-            style={{ width: 34, height: 34, resizeMode: "contain" }}
+            style={{ width: 34, height: 34, resizeMode: "contain",marginBottom:5, }}
           />
+          {/* <Text style={{backgroundColor:"#ffffff"}}>{currentAddress.name}</Text> */}
         </Marker>
         {
           destination && (
