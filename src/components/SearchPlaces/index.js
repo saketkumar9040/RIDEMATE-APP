@@ -2,11 +2,13 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import Geolocation from "react-native-geolocation-service";
 import { GOOGLE_API_KEY } from "@env";
 import { useEffect } from "react";
-import { getLastKnownPositionAsync } from "expo-location";
+import { useSelector } from "react-redux";
 
 navigator.geolocation = Geolocation;
 
 const SearchPlaces = ({ placeholder }) => {
+  const currentLocation = useSelector((state) => state.auth.currentLocation);
+  // console.log(currentLocation);
 
   return (
     <GooglePlacesAutocomplete
@@ -22,7 +24,9 @@ const SearchPlaces = ({ placeholder }) => {
         language: "en",
         type: "establishment",
         components: "country:in",
-        // radius:50
+        location: `${currentLocation?.coords.latitude},${currentLocation?.coords.longitude}`,
+        radius: "50000",
+        strictbounds: true,
       }}
       enablePoweredByContainer={false}
       styles={{
