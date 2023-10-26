@@ -8,6 +8,7 @@ import HomeScreen from "../screens/HomeScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import { useDispatch } from "react-redux";
 import { setCurrentAddress, setCurrentLocation } from "../redux/authSlice";
+import { setOrigin } from "../redux/navSlice";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +23,12 @@ const MainNavigator = () => {
         return;
       } else {
         let currentLocation = await Location.getCurrentPositionAsync({});
+        // console.log(currentLocation)
         dispatch(setCurrentLocation({currentLocation}));
+        dispatch(setOrigin({location:{
+           lat:currentLocation.coords.latitude,
+           lng:currentLocation.coords.longitude
+        }}))
         let currentAddress = await Location.reverseGeocodeAsync({
           latitude: currentLocation?.coords.latitude,
           longitude: currentLocation?.coords.longitude,

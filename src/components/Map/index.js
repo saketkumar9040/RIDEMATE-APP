@@ -1,21 +1,34 @@
 import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import MapView, { Marker } from "react-native-maps";
+import MapViewDirections from 'react-native-maps-directions';
 import start from "../../../assets/images/pin.png";
 import end from "../../../assets/images/flag.png";
+import {GOOGLE_API_KEY} from "@env";
 
 import styles from "./style";
 import { useSelector } from "react-redux";
 import { mapCustomStyle } from "../../globals/styles/mapCustomStyle";
 
 const Map = () => {
-  const currentLocation = useSelector(state=>state.auth.currentLocation)
-  const currentAddress = useSelector(state=>state.auth.currentAddress[0])
+  const currentLocation = useSelector(state=>state?.auth.currentLocation)
+  const currentAddress = useSelector(state=>state?.auth.currentAddress[0])
   const startingPoint = useSelector(state=>state?.nav.origin);
   const destination = useSelector(state=>state?.nav.destination);
-  console.log(currentAddress)
-  console.log(startingPoint);
-  console.log(destination)
+  // console.log(currentAddress)
+  // console.log(startingPoint.description);
+  // console.log(destination)
+  const mapRef = useRef();
+
+  useEffect(()=>{
+    if(!startingPoint || ! destination){
+      return
+    };
+    mapRef.current.fitToSuppliedMarkers(["origin","destination"],{
+      edgePadding:{top:50,right:50,bottom:50,left:50}
+    });
+  },[startingPoint,destination]);
+
   return (
     <View style={styles.mapContainer}>
       <StatusBar
@@ -25,6 +38,7 @@ const Map = () => {
       />
       <Text style={styles.rideMateText}>RideMate</Text>
       <MapView
+        ref={mapRef}
         style={styles.map}
         mapType="mutedStandard"
         initialRegion={{
@@ -35,11 +49,22 @@ const Map = () => {
         }}
         customMapStyle={mapCustomStyle}
       >
+        {
+          startingPoint && destination && (
+            <MapViewDirections
+               origin={{latitude:startingPoint.location.lat,longitude:startingPoint.location.lng}}
+               destination={{latitude:destination.location.lat,longitude:destination.location.lng}}
+               apikey={GOOGLE_API_KEY}
+               strokeWidth={3}
+               strokeColor="red"
+            />
+          )
+        }
       
         <Marker
           coordinate={{
-            latitude: startingPoint?.location.lat ?? currentLocation.coords.latitude,
-            longitude: startingPoint?.location.lng ?? currentLocation.coords.longitude,
+            latitude: startingPoint?.location?.lat ?? currentLocation.coords.latitude,
+            longitude: startingPoint?.location?.lng ?? currentLocation.coords.longitude,
           }}
           title="origin"
           description={startingPoint?.description?? currentAddress.name}
@@ -58,6 +83,9 @@ const Map = () => {
               latitude: destination?.location.lat ,
               longitude: destination?.location.lng ,
             }}
+            title="destination"
+            description={destination?.description}
+            identifier="destination"
           >
             <Image
               source={end}
