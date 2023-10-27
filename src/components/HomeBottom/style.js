@@ -48,6 +48,9 @@ const styles = StyleSheet.create({
         position:"absolute",
         right:10,
        },
+       downArrow:{
+        padding:10,
+       }
 });
 
 export default styles;

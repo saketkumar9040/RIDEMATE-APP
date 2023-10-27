@@ -14,9 +14,7 @@ const Map = () => {
   const currentAddress = useSelector(state=>state.auth.currentAddress[0])
   const startingPoint = useSelector(state=>state.nav.origin);
   const destination = useSelector(state=>state.nav.destination);
-  // console.log(currentAddress)
-  // console.log(startingPoint);
-  // console.log(destination)
+
   const mapRef = useRef();
 
   useEffect(()=>{
@@ -47,6 +45,11 @@ const Map = () => {
           longitudeDelta: 0.0421,
         }}
         customMapStyle={mapCustomStyle}
+        showsUserLocation={true}
+        followsUserLocation={true}
+        rotateEnabled={true}
+        zoomEnabled={true}
+        toolbarEnabled={true}
       >
         {
           startingPoint && destination && (
