@@ -41,7 +41,7 @@ const HomeBottom = () => {
         />
         <TextInput
          placeholder={"Enter starting point..."}
-         value={origin  ? origin.description : currentAddress.name}
+         value={origin?.description  ? origin.description : currentAddress.name}
          style={styles.textInput}
          onFocus={toggleModal}
         />
@@ -52,7 +52,7 @@ const HomeBottom = () => {
         <FontAwesome name="flag" size={29} color="black" />
         <TextInput
          placeholder={"Enter Destination..."}
-         value={destination ? origin.description : currentAddress.name}
+         value={destination ? destination.description : ""}
          style={styles.textInput}
          onFocus={toggleModal}
         />
