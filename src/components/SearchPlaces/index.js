@@ -35,13 +35,15 @@ const SearchPlaces = ({ placeholder, type }) => {
           flex: 1,
         },
         textInputContainer: {
-          padding: 10,
+          padding: 5,
         },
         textInput: {
-          color: "#5d5d5d",
+          color: "#000000",
           fontSize: 18,
           paddingLeft: 20,
-          fontWeight: "800",
+          marginLeft:10,
+          fontWeight: "500",
+        
         },
         predefinedPlacesDescription: {
           color: "#1faadb",

@@ -6,7 +6,7 @@ import {
   Button,
   StyleSheet,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./style";
 import { useSelector } from "react-redux";
 import {
@@ -30,6 +30,11 @@ const HomeBottom = () => {
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+  useEffect(()=>{
+    if(destination.description){
+      toggleModal();
+    }
+  },[destination])
 
   return (
     <>
@@ -45,24 +50,33 @@ const HomeBottom = () => {
         }}
       >
         <StatusBar translucent backgroundColor="#fff" />
-
         <View style={{ flex: 1, backgroundColor: "#fff" }}>
-        <TouchableOpacity onPress={toggleModal} style={styles.downArrow}>
-          <AntDesign name="down" size={28} color="black" />
-        </TouchableOpacity>
-        <View style={{...styles.searchInputContainer,marginHorizontal:10,}}>
-          <FontAwesome
-            name="map-marker"
-            size={32}
-            color="black"
-            style={{ marginRight: 10 }}
-          />
-          <SearchPlaces placeholder={currentAddress?.name} type="startingPoint"/>
-        </View>
-        <View style={{...styles.searchInputContainer,marginHorizontal:10,}}>
-          <FontAwesome name="flag" size={29} color="black" />
-          <SearchPlaces placeholder={"Enter destination..."} type="destination"/>
-        </View>
+          <TouchableOpacity onPress={toggleModal} style={styles.downArrow}>
+            <AntDesign name="down" size={28} color="black" />
+          </TouchableOpacity>
+          <View
+            style={{ ...styles.searchInputContainer, marginHorizontal: 10 }}
+          >
+            <FontAwesome
+              name="map-marker"
+              size={32}
+              color="black"
+              style={{ marginRight: 10 }}
+            />
+            <SearchPlaces
+              placeholder={origin.description ?origin.description:currentAddress.name}
+              type="startingPoint"
+            />
+          </View>
+          <View
+            style={{ ...styles.searchInputContainer, marginHorizontal: 10 }}
+          >
+            <FontAwesome name="flag" size={29} color="black" />
+            <SearchPlaces
+              placeholder={destination?destination.description:"Enter destination..."}
+              type="destination"
+            />
+          </View>
         </View>
       </Modal>
       <View style={styles.bottomContainer}>
@@ -82,8 +96,6 @@ const HomeBottom = () => {
             style={styles.textInput}
             onFocus={toggleModal}
           />
-
-          {/* <SearchPlaces placeholder={currentAddress?.name} type="startingPoint"/> */}
         </View>
         <View style={styles.searchInputContainer}>
           <FontAwesome name="flag" size={29} color="black" />
@@ -93,7 +105,6 @@ const HomeBottom = () => {
             style={styles.textInput}
             onFocus={toggleModal}
           />
-          {/* <SearchPlaces placeholder={"Enter destination..."} type="destination"/> */}
         </View>
         <TouchableOpacity
           style={styles.buttonContainer}

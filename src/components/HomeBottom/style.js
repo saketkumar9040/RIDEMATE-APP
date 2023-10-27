@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         right:10,
        },
        downArrow:{
-        padding:10,
+        padding:10
        }
 });
 
