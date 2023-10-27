@@ -41,14 +41,13 @@ const Map = () => {
         initialRegion={{
           latitude: startingPoint.location.lat,
           longitude: startingPoint.location.lng,
-          latitudeDelta: 0.0622,
+          latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
         customMapStyle={mapCustomStyle}
         showsUserLocation={true}
         followsUserLocation={true}
         rotateEnabled={true}
-        zoomEnabled={true}
         toolbarEnabled={true}
       >
         {

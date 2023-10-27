@@ -33,6 +33,8 @@ const SearchPlaces = ({ placeholder, type }) => {
       styles={{
         container: {
           flex: 1,
+          width:"100%",
+          alignItems:"center"
         },
         textInputContainer: {
           padding: 5,
