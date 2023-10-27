@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
 import React, { useEffect, useRef } from "react";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker,PROVIDER_GOOGLE } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import start from "../../../assets/images/pin.png";
 import end from "../../../assets/images/flag.png";
@@ -38,6 +38,7 @@ const Map = () => {
       &units=imperial
       &key=${GOOGLE_API_KEY}`)
           .then((res) => console.log(res))
+          .then((data)=>console.log(data))
          
     };
     getTravelTime();
@@ -52,6 +53,7 @@ const Map = () => {
       <Text style={styles.rideMateText}>RideMate</Text>
       <MapView
         ref={mapRef}
+        provider={PROVIDER_GOOGLE}
         style={styles.map}
         mapType="mutedStandard"
         initialRegion={{
