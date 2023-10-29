@@ -14,6 +14,7 @@ const Map = () => {
   const currentAddress = useSelector((state) => state.auth.currentAddress[0]);
   const startingPoint = useSelector((state) => state.nav.origin);
   const destination = useSelector((state) => state.nav.destination);
+  console.log(startingPoint);
 
   const mapRef = useRef();
 
@@ -43,6 +44,7 @@ const Map = () => {
     };
     getTravelTime();
   }, [startingPoint, destination, GOOGLE_API_KEY]);
+
   return (
     <View style={styles.mapContainer}>
       <StatusBar
