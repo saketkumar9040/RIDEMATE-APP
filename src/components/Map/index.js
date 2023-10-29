@@ -18,7 +18,7 @@ const Map = () => {
   const currentAddress = useSelector((state) => state.auth.currentAddress[0]);
   const startingPoint = useSelector((state) => state.nav.origin);
   const destination = useSelector((state) => state.nav.destination);
-  console.log(startingPoint);
+  // console.log(startingPoint);
 
   const mapRef = useRef();
 
@@ -81,7 +81,7 @@ const Map = () => {
         initialRegion={{
           latitude: startingPoint.location.lat,
           longitude: startingPoint.location.lng,
-          latitudeDelta: 0.0922,
+          latitudeDelta: 0.0422,
           longitudeDelta: 0.0421,
         }}
         customMapStyle={mapCustomStyle}
