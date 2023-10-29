@@ -103,7 +103,7 @@ const HomeBottom = () => {
             disabled={!selectedVehicle}
           >
             <Text style={styles.buttonText}>
-              {selectedVehicle ? "RIDE" : "CHOOSE A RIDE"}
+              {selectedVehicle ? "RIDE" : "CHOOSE A RIDE"}{" "}
               {selectedVehicle?.title}
             </Text>
             <AntDesign
