@@ -1,16 +1,20 @@
 import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
-import React, { useEffect, useRef } from "react";
-import MapView, { Marker,PROVIDER_GOOGLE } from "react-native-maps";
+import React, { useEffect, useRef, useState } from "react";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import start from "../../../assets/images/pin.png";
 import end from "../../../assets/images/flag.png";
 import { GOOGLE_API_KEY } from "@env";
+import axios from "axios";
 
 import styles from "./style";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { mapCustomStyle } from "../../globals/styles/mapCustomStyle";
+import { setTravelDistance, setTravelTime } from "../../redux/navSlice";
 
 const Map = () => {
+  const dispatch = useDispatch();
+
   const currentAddress = useSelector((state) => state.auth.currentAddress[0]);
   const startingPoint = useSelector((state) => state.nav.origin);
   const destination = useSelector((state) => state.nav.destination);
@@ -27,23 +31,39 @@ const Map = () => {
     });
   }, [startingPoint, destination]);
 
-  useEffect(() => {
-    if (!startingPoint || !destination) {
-      return;
-    }
-    const getTravelTime = async () => {
-      const URL =
-        fetch(`https://maps.googleapis.com/maps/api/distancematrix/json
-      ?destinations=${destination.description}
-      &origins=${[`${startingPoint.location.lat},${startingPoint.location.lng}`]}
-      &units=imperial
-      &key=${GOOGLE_API_KEY}`)
-          .then((res) => console.log(res))
-          .then((data)=>console.log(data))
-         
-    };
-    getTravelTime();
-  }, [startingPoint, destination, GOOGLE_API_KEY]);
+  // useEffect(() => {
+  //   if (!startingPoint || !destination) {
+  //     return;
+  //   }
+  //   const getTravelTime = async () => {
+  //     const URL =
+  //       await axios(`https://maps.googleapis.com/maps/api/distancematrix/json
+  //     ?destinations=${destination.description}
+  //     &origins=${[
+  //       `${startingPoint.location.lat},${startingPoint.location.lng}`,
+  //     ]}
+  //     &units=imperial
+  //     &key=${GOOGLE_API_KEY}`)
+  //         .then((res) => JSON.stringify(res))
+  //         .then((data) => console.log(data))
+  //         .catch((err) => console.log(err));
+  //   };
+  //   getTravelTime();
+  //   const getTravelDistance = async () => {
+  //     const distance = await getDistance(
+  //       {
+  //         latitude: startingPoint.location.lat,
+  //         longitude: startingPoint.location.lng,
+  //       },
+  //       {
+  //         latitude: destination.location.lat,
+  //         longitude: destination.location.lng,
+  //       }
+  //     );
+  //     dispatch(setTravelDistance(distance / 1000));
+  //   };
+  //   getTravelDistance();
+  // }, [startingPoint, destination, GOOGLE_API_KEY]);
 
   return (
     <View style={styles.mapContainer}>
@@ -84,6 +104,10 @@ const Map = () => {
             apikey={GOOGLE_API_KEY}
             strokeWidth={3}
             strokeColor="black"
+            onReady={(e) => {
+              dispatch(setTravelTime(e.legs[0].duration.text));
+              dispatch(setTravelDistance(e.legs[0].distance.text));
+            }}
           />
         )}
 

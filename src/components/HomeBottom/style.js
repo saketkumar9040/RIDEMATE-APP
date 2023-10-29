@@ -3,11 +3,13 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   bottomContainer: {
     padding: 10,
+    marginBottom:10,
   },
   searchRideText: {
     fontSize: 22,
     fontWeight: "700",
     alignSelf: "center",
+    marginBottom:5,
   },
   searchInputContainer: {
     flexDirection: "row",
@@ -58,7 +60,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   carContainer:{
-   marginLeft:-50
+   marginLeft:-50,
+   gap:5,
   },
   carTitle:{
      fontSize:18,
@@ -67,6 +70,10 @@ const styles = StyleSheet.create({
   moneyText:{
     fontSize:18,
     fontWeight:"700"
+  },
+  travelText:{
+    fontWeight:"500",
+    fontSize:16,
   }
 });
 

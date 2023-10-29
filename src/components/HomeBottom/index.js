@@ -43,13 +43,13 @@ const vehicleData = [
 
 const HomeBottom = () => {
   const currentAddress = useSelector((state) => state?.auth?.currentAddress[0]);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [selectedVehicle, setSelectedVehicle] = useState(null);
-  
   const origin = useSelector((state) => state.nav.origin);
   const destination = useSelector((state) => state.nav.destination);
-  // console.log(origin);
-  // console.log(destination);
+  const travelDistance = useSelector((state) => state.nav.travelDistance);
+  const travelTime = useSelector((state) => state.nav.travelTime);
+
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [selectedVehicle, setSelectedVehicle] = useState(null);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -65,13 +65,20 @@ const HomeBottom = () => {
       {destination ? (
         <View style={{ ...styles.bottomContainer, flex: 1 }}>
           <Text style={styles.searchRideText}>Select a Ride</Text>
+          <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+            <Text style={styles.travelText}>Travel-time:{" "}{travelTime}</Text>
+            <Text style={styles.travelText}>Distance: {travelDistance}</Text>
+          </View>
           <FlatList
             showsVerticalScrollIndicator={false}
             keyExtractor={(item) => item.id}
             data={vehicleData}
             renderItem={({ item }) => {
               return (
-                <TouchableOpacity style={styles.rideContainer} onPress={()=>setSelectedVehicle(item)}>
+                <TouchableOpacity
+                  style={styles.rideContainer}
+                  onPress={() => setSelectedVehicle(item)}
+                >
                   <Image
                     style={{
                       width: 100,
@@ -82,9 +89,10 @@ const HomeBottom = () => {
                   />
                   <View style={styles.carContainer}>
                     <Text style={styles.carTitle}>{item.title}</Text>
-                    <Text>Travel Time ...</Text>
                   </View>
-                  <Text style={styles.moneyText}>Rs 200</Text>
+                  <Text style={styles.moneyText}>RS{"  "}{
+                    new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(Number(travelTime.match(/\d+/g)[0]) * 15 * item.multiplier)
+                  }</Text>
                 </TouchableOpacity>
               );
             }}
@@ -92,8 +100,12 @@ const HomeBottom = () => {
           <TouchableOpacity
             style={styles.buttonContainer}
             onPress={() => console.log("searching...")}
+            disabled={!selectedVehicle}
           >
-            <Text style={styles.buttonText}>RIDE {selectedVehicle?.title}</Text>
+            <Text style={styles.buttonText}>
+              {selectedVehicle ? "RIDE" : "CHOOSE A RIDE"}
+              {selectedVehicle?.title}
+            </Text>
             <AntDesign
               name="arrowright"
               size={28}
