@@ -11,9 +11,9 @@ import { useSelector } from "react-redux";
 import { mapCustomStyle } from "../../globals/styles/mapCustomStyle";
 
 const Map = () => {
-  const currentAddress = useSelector((state) => state.auth.currentAddress[0]);
-  const startingPoint = useSelector((state) => state.nav.origin);
-  const destination = useSelector((state) => state.nav.destination);
+  const currentAddress = useSelector((state) => state?.auth?.currentAddress[0]);
+  const startingPoint = useSelector((state) => state?.nav?.origin);
+  const destination = useSelector((state) => state?.nav?.destination);
 
   const mapRef = useRef();
 
