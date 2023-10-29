@@ -91,7 +91,7 @@ const HomeBottom = () => {
                     <Text style={styles.carTitle}>{item.title}</Text>
                   </View>
                   <Text style={styles.moneyText}>RS{"  "}{
-                    new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(Number(travelTime.match(/\d+/g)[0]) * 15 * item.multiplier)
+                    new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(Number(travelTime?.match(/\d+/g)[0]) *7 * item.multiplier)
                   }</Text>
                 </TouchableOpacity>
               );
