@@ -145,7 +145,7 @@ const HomeBottom = () => {
                   placeholder={
                     origin.description
                       ? origin.description
-                      : currentAddress.name
+                      : currentAddress?.name
                   }
                   type="startingPoint"
                 />
@@ -177,7 +177,7 @@ const HomeBottom = () => {
               <TextInput
                 placeholder={"Enter starting point..."}
                 value={
-                  origin?.description ? origin.description : currentAddress.name
+                  origin?.description ? origin.description : currentAddress?.name
                 }
                 style={styles.textInput}
                 onFocus={toggleModal}

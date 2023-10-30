@@ -117,7 +117,7 @@ const Map = () => {
             longitude: startingPoint.location.lng,
           }}
           title="origin"
-          description={startingPoint?.description ?? currentAddress.name}
+          description={startingPoint?.description ?? currentAddress?.name}
           identifier="origin"
         >
           <Image
